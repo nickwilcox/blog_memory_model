@@ -23,16 +23,14 @@ impl SynchronisedSumFixed {
     pub fn generate(&self) {
         let mut data: Box<[u32]> = (0..self.samples as u32).collect();
 
-        unsafe {
-            self.shared.store(data.as_mut_ptr(), Ordering::Release);
-        }
+        self.shared.store(data.as_mut_ptr(), Ordering::Release);
         std::mem::forget(data);
     }
 
     #[inline(never)]
     pub fn calculate(&self, expected_sum: u32) {
         loop {
-            let data_ptr = unsafe { self.shared.load(Ordering::Acquire) };
+            let data_ptr = self.shared.load(Ordering::Acquire);
 
             if !data_ptr.is_null() {
                 let data = unsafe { std::slice::from_raw_parts(data_ptr, self.samples) };
