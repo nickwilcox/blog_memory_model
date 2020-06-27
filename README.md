@@ -1,4 +1,4 @@
-The code is the repository accompanies [this article on my blog](http://www.nickwilcox.com/blog/arm_atomics/).
+The code is the repository accompanies the [Examining ARM vs X86 Memory Models with Rust](http://www.nickwilcox.com/blog/arm_vs_x86_memory_model/) post on my blog.
 
 To run the version that performs correctly on X86 CPU's only use
 
