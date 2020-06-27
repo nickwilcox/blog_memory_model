@@ -12,7 +12,7 @@ pub struct SynchronisedSum {
 
 impl SynchronisedSum {
     pub fn new(samples: usize) -> Self {
-        assert!((samples as u32) < u32::MAX);
+        assert!(samples < (u32::MAX as usize));
         Self {
             shared: UnsafeCell::new(std::ptr::null()),
             samples,

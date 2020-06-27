@@ -12,7 +12,7 @@ pub struct SynchronisedSumFixed {
 
 impl SynchronisedSumFixed {
     pub fn new(samples: usize) -> Self {
-        assert!((samples as u32) < u32::MAX);
+        assert!(samples < (u32::MAX as usize));
         Self {
             shared: AtomicPtr::new(std::ptr::null_mut()),
             samples,
